@@ -17,13 +17,8 @@ class Form extends React.Component {
 
     handleClick = (e) => {
         e.preventDefault();
-        let api = e.target.api.value;
-        let method = e.target.method.value;
-        const data = {
-            api: api,
-            method: method
-        }
-        this.setState(data);
+        let api = this.state.api;
+        this.setState({api});
     }
 
     methodHandler = (e) => {
