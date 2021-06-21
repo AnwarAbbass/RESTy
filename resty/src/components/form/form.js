@@ -1,5 +1,6 @@
 import React from 'react';
 import './form.scss';
+import axios from "axios";
 
 class Form extends React.Component {
     constructor(props) {
@@ -8,36 +9,56 @@ class Form extends React.Component {
             api: '',
             method: '',
         };
+        this.api = '';
+        this.method = '';
     }
 
     handleInput = (e) => {
         e.preventDefault();
-        this.setState({ api: e.target.value });
+        this.api = e.target.value;
+        // this.setState({ api:  });
     }
 
-    handleClick = (e) => {
+    handleClick = async e => {
         e.preventDefault();
-        let api = this.state.api;
-        this.setState({api});
+        this.setState({ api: this.api ,method: this.method || 'GET'});
+        let apiResult = await axios.get('https://swapi.dev/api/people');
+        // let data = await apiResult.json();
+        console.log('.............. ', apiResult.headers);
+        console.log();
+        const count = apiResult.data.count ;
+        const results = apiResult.data;
+        const headers = apiResult.headers;
+        // console.log(headers);
+        // const obj ={
+        //     results,
+        //     headers
+        // }
+
+        this.props.handler(results,count,headers);
     }
+
+    
 
     methodHandler = (e) => {
         e.preventDefault();
-        this.setState({ method: e.target.value });
+        console.log(e.target.value);
+        this.method = e.target.value ;
     }
 
     render() {
         return (
             <div>
-                <form>
-                    <input onChange={this.handleInput} />
+                <form onSubmit={this.handleClick} >
+                    <input onChange={this.handleInput}/>
 
-                    <button onClick={this.handleClick} >GO</button>
+                    <input type="submit" value="GO"/>
                     <br></br>
                     <button value={`GET`} onClick={this.methodHandler}>GET</button>
                     <button value={`POST`} onClick={this.methodHandler}>POST</button>
                     <button value={`PUT`} onClick={this.methodHandler}>PUT</button>
                     <button value={`DELETE`} onClick={this.methodHandler}>DELETE</button>
+
                 </form>
 
                 <br></br>
@@ -47,6 +68,8 @@ class Form extends React.Component {
 
                         {this.state.api}
                     </p>
+                    {this.method = ''}
+                    {this.api = ''}
                 </div>
             </div>
         );
