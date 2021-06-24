@@ -1,0 +1,2 @@
+(this.webpackJsonpresty=this.webpackJsonpresty||[]).push([[0],{11:function(t,e,n){"use strict";n.r(e);var c=n(1),s=n.n(c),r=n(3),i=n.n(r),o=(n(8),n.p,n(9),n(0));var a=function(){return Object(o.jsx)("div",{className:"App"})};i.a.render(Object(o.jsx)(s.a.StrictMode,{children:Object(o.jsx)(a,{})}),document.getElementById("root"))},8:function(t,e,n){},9:function(t,e,n){}},[[11,1,2]]]);
+//# sourceMappingURL=main.ee6e77ed.chunk.js.map
