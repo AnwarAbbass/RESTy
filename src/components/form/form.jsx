@@ -1,5 +1,6 @@
 import './form.scss';
 import React from 'react';
+import axios from 'axios';
 
 class Form extends React.Component{
     constructor(props){
@@ -12,13 +13,20 @@ class Form extends React.Component{
         this.api='';
     }
 
-    handleForm = (e) => {
+     handleForm = async(e) => {
         e.preventDefault();
-        console.log(e.target.api.value);
         this.setState({ 
             api: e.target.api.value,
-            method: this.method
+            method: (this.method)? this.method:'GET',
         });
+        let result = await axios({
+            method: (this.method)? this.method:'GET',
+            url: e.target.api.value,
+        });
+        const data = result.data.results;
+        const count =  result.data.count;
+        const headers = result.headers;
+        this.props.result(data,count,headers);
     }
 
     methodHandler = (e) => {
@@ -39,7 +47,7 @@ class Form extends React.Component{
                 <button id="btn" value={`PUT`} onClick={this.methodHandler}>PUT</button>
                 <button id="btn" value={`DELETE`} onClick={this.methodHandler}>DELETE</button>
             </form>
-            <div className="result">
+            <div className="result1">
                 {this.state.method} &nbsp;
 
                 {this.state.api}
