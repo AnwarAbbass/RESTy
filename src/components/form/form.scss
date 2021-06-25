@@ -1,0 +1,21 @@
+div{
+    form{
+        width: 50%;
+        margin: 0% 40%;
+
+        .get {
+            margin-left: 5%;
+        }
+
+        #btn{
+            margin-top: 1%;
+        }
+    }
+
+    .result{
+        border: ridge 5px gray;
+        width: 50%;
+        margin: 1% auto;
+        height: 100px;
+    }
+}
