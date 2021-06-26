@@ -7,7 +7,8 @@ class Form extends React.Component{
         super(props)
         this.state={
             api:'',
-            method:''
+            method:'',
+            history :(localStorage.getItem('history'))?JSON.parse( localStorage.getItem('history')):[]
         };
         this.method='';
         this.api='';
@@ -15,24 +16,51 @@ class Form extends React.Component{
 
      handleForm = async(e) => {
         e.preventDefault();
+        this.props.loading(true)
+        let result = await axios({
+            method: (this.method)? this.method :'GET',
+            url: e.target.api.value,
+        }).catch(e=>{console.log(e.messeg);});
+        console.log('ffffffffff',result);
+        if(result){
+        localStorage.setItem('history', JSON.stringify(result));
         this.setState({ 
             api: e.target.api.value,
             method: (this.method)? this.method:'GET',
+            history:result
         });
-        let result = await axios({
-            method: (this.method)? this.method:'GET',
-            url: e.target.api.value,
-        });
-        const data = result.data.results;
+        const data = result;
         const count =  result.data.count;
         const headers = result.headers;
-        this.props.result(data,count,headers);
+        
+        this.props.result(data,count,headers,this.state.history);}
+        else {
+            console.log('else');
+            this.setState({ 
+
+                api: e.target.api.value,
+                method: (this.method)? this.method:'GET',
+                history:{
+                    config:{
+                        url: e.target.api.value,
+                         method: (this.method)? this.method:'GET',
+                    },
+                    data:{count: 0,
+                    headers:{},
+                    results:[],
+                  }}
+            })
+                this.props.result([],0,{},this.state.history);
+        }
+        this.props.loading(false)
     }
 
     methodHandler = (e) => {
         e.preventDefault();
         this.method=e.target.value;
     }
+
+    
 
     render(){
         return(
