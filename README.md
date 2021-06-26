@@ -6,6 +6,8 @@
 - As a user, I want visual confirmation that my entries and selections are valid so that I have confidence the application will be able to fetch the API data that I’ve requested
 - As a user, I want to enter the URL to an API and issue a GET request so that I can retrieve it’s data
 - As a user, I want to see the results returned from an API request in my browser in a readable format
+- As a user, I want to see all of my previous queries as a separate page so that I can browse them in greater detail
+- As a user, I would like to view a separate “Help” page so I can learn how the application works
 
 ### Author: Anwar Abbass
 
@@ -18,3 +20,4 @@
 
 ![uml](https://github.com/AnwarAbbass/RESTy/blob/main/react.png?raw=true)
 ![](https://github.com/AnwarAbbass/RESTy/blob/lab27/resty/react%20(1).png?raw=true)
+![](https://github.com/AnwarAbbass/RESTy/blob/main/react%20(2).png?raw=true)

@@ -4,7 +4,10 @@ import Form from "./components/form/form";
 import Result from "./components/result/result";
 import React from "react";
 import History  from "./components/history/history";
-import'./App.scss'
+import'./App.scss';
+import { BrowserRouter as Router} from 'react-router-dom';
+import Main from "./components/main/main";
+
 class App extends React.Component {
   constructor(props){
     super(props)
@@ -72,7 +75,11 @@ class App extends React.Component {
   render(){
   return (
     <div className="App">
+      <Router>
       <Header/>
+      <Main/>
+      </Router>
+
       <div className="history-dev">
       <History h={this.state.history} renderHistory={this.updateHistory}/>
       </div>
