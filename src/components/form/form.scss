@@ -15,11 +15,12 @@ div{
     .result1{
         display: flex;
         border: ridge 5px gray;
-        width: 50%;
-        margin: 1% auto;
+        width: 40%;
+        margin-top:1% ;
+        margin-left: 30%;
         height: 30px;
-        justify-items: center;
-        align-items: center;
-        text-align: center;
+        // justify-items: center;
+        // align-items: center;
+        // text-align: center;
     }
 }

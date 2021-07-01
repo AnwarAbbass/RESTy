@@ -17,9 +17,14 @@ class Form extends React.Component{
      handleForm = async(e) => {
         e.preventDefault();
         this.props.loading(true)
+        let data = {
+            userName:'Anwar',
+            password:'1234',
+        }
         let result = await axios({
             method: (this.method)? this.method :'GET',
             url: e.target.api.value,
+            data: data ? data:{},
         }).catch(e=>{console.log(e.messeg);});
         console.log('ffffffffff',result);
         if(result){
