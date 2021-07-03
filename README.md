@@ -11,6 +11,9 @@
 - As a user, I want to click on an old query and have my selections appear in the form for me, so I don’t have to re-type them
 - As a user, I want to see a “loading” indicator while RESTy is fetching data so that I know it’s working on my request
 
+- As a user, I want to see all of my previous queries as a separate page so that I can browse them in greater detail
+- As a user, I would like to view a separate “Help” page so I can learn how the application works
+
 ### Author: Anwar Abbass
 
 ## Setup:
@@ -26,3 +29,4 @@
 
 ## Deploy 
 [Netlify](https://brave-noyce-7202e2.netlify.app/)
+![](https://github.com/AnwarAbbass/RESTy/blob/main/react%20(2).png?raw=true)
