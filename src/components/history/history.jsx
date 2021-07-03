@@ -2,7 +2,6 @@ import React from "react";
 class History extends React.Component{
 
     handleHistory=(e)=>{
-        console.log('hhhhhhhhhhhhhhhhhhhhhhhhhh',this.props.h[e.target.value]);
         this.props.renderHistory(this.props.h[e.target.value]);
     }
     render(){

@@ -32,8 +32,9 @@
 ![](https://github.com/AnwarAbbass/RESTy/blob/lab27/resty/react%20(1).png?raw=true)
 ![](https://github.com/AnwarAbbass/RESTy/blob/main/react%20(2).png?raw=true)
 ![](https://github.com/AnwarAbbass/RESTy/blob/Component-Composition/react%20(4).png?raw=true)
+![](https://github.com/AnwarAbbass/RESTy/blob/main/react%20(2).png?raw=true)
 
 ## Deploy 
 [Netlify](https://brave-noyce-7202e2.netlify.app/)
 
-![](https://github.com/AnwarAbbass/RESTy/blob/main/react%20(2).png?raw=true)
+

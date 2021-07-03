@@ -15,8 +15,8 @@ class Result extends React.Component{
                    </div>
                </IF>
                <ELSE condition={this.props.loading}>
-                   {console.log(this.props.data.count)}
-                   <If condition={this.props.data.count}>
+                   {console.log(this.props.data)}
+                   <If condition={this.props.data.count }>
                         <section className="result">
                         <ReactJson src={this.props.data}/>
                         </section>

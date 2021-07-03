@@ -7,7 +7,7 @@ const IF = (props) => {
 }
 
 const If=(props)=>{
-    if (props.condition > 0) {
+    if (props.condition !== 0) {
         return props.children;
     } else {
         return null;

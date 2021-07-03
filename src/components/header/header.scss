@@ -1,14 +1,33 @@
 
 header{
-    background-color: #529471;
+    background-color: #000;
     h1{
         display: flex;
         color: #E5F1E3;
-        justify-content: center;
         margin-top: 0%;
-        margin-bottom: 1%;
-        height: 4pc;
+        margin-bottom: 0%;
+        justify-content: center;
+        // height: 4pc;
         align-items: center;
     }
-}
+    ul{
+	    font: inherit;
+	    vertical-align: baseline;
+        list-style: none;
+        li{
+            a{
+                color: blanchedalmond;
 
+                margin: 0%;
+            }
+            list-style: none;
+
+	        font: inherit;
+	        vertical-align: baseline;
+            float: left;
+            font-size: large;
+            padding-right: 1%;
+        }
+    }
+    height: 6pc;
+}

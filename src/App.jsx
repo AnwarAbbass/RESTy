@@ -6,7 +6,10 @@ import React from "react";
 import History  from "./components/history/history";
 import'./App.scss';
 import { BrowserRouter as Router} from 'react-router-dom';
-import Main from "./components/main/main";
+// import Main from "./components/main/main";
+import { Route, Switch } from "react-router-dom";
+import Help from './components/Help/Help';
+import Historypage from "./components/history";
 
 class App extends React.Component {
   constructor(props){
@@ -23,34 +26,21 @@ class App extends React.Component {
     this.historyStorage=[];
   }
 
-  updateState =(result,count,headers,history)=>{
+  updateState =(history)=>{
 
     
     // this.historyStorage.push(JSON.parse( localStorage.getItem('history')))
-    console.log('1',history);
     this.historyStorage.push(history);
-    console.log('2',this.historyStorage);
     
     localStorage.setItem('history',JSON.stringify(this.historyStorage));
     
-    if(count>0){
       this.setState({
-        data:{count: count,
-        headers:headers,
-        results:result.data.results,
+        data:{count: history.data.count,
+        headers:history.headers,
+        results:history.data.results,
         },
         history : this.historyStorage,
       })
-    }
-    else {
-      this.setState({
-        data:{count: count,
-        headers:headers,
-        results:result,
-        },
-        history : this.historyStorage,
-      })
-    }
   }
 
   updateHistory =(data)=>{
@@ -72,20 +62,49 @@ class App extends React.Component {
     this.setState({loading:bl});
 }
 
+refillTheForm = (method, url) => {
+  this.setState({ formMethod: method, formURL: url });
+};
   render(){
   return (
     <div className="App">
-      <Router>
-      <Header/>
-      <Main/>
+      {/* <Router>
+      <Header />
+      <Main />
+      <Help/>
       </Router>
-
       <div className="history-dev">
       <History h={this.state.history} renderHistory={this.updateHistory}/>
       </div>
       <Form result={this.updateState} loading={this.loading.bind(this)}/>
       <Result data ={this.state.data} loading={this.state.loading}/>
-      <Footer/>
+      
+
+      <Footer/> */}
+    <Router>
+      <Switch>
+            <Route exact path="/">
+            <Header/>
+            <div className="history-dev">
+              <History h={this.state.history} renderHistory={this.updateHistory}/>
+            </div>
+            <Form result={this.updateState} loading={this.loading.bind(this)}/>
+             <Result data ={this.state.data} loading={this.state.loading}/>
+              
+            </Route>
+            
+            <Route exact path="/history">
+              <Header/>
+             <Historypage  history={this.state.history} renderHistory={this.updateHistory} />
+            </Route>
+
+            <Route exact path="/help">
+            <Header/>
+              <Help />
+            </Route>
+      </Switch>
+    </Router>
+    <Footer/>
     </div>
   );
   }
