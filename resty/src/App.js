@@ -2,17 +2,34 @@ import React from 'react';
 import Header from './components/header/header.js';
 import Form from './components/form/form.js';
 import Footer from './components/footer/footer.js';
+import Result from './components/results/results.js';
+// import './App.css';
 
-import './App.css';
+class App extends React.Component{
+  constructor(props){
+    super(props);
+    this.state ={
+      result : [],
+      count : 0,
+      headers:{}
+    }
+  }
 
-function App() {
-  return (
-    <React.Fragment>
-    <Header/>
-    <Form/>
-    <Footer/>
-    </React.Fragment>
-  );
+  handleForm = (result,count,headers)=>{
+    this.setState({result,count,headers});
+  }
+
+  render(){
+    return (
+      <React.Fragment>
+      <Header/>
+      <Form handler={this.handleForm}/>
+      <Result test ={this.state} />
+      <Footer/>
+      </React.Fragment>
+    );
+  }
 }
+
 
 export default App;
