@@ -14,19 +14,22 @@ class Form extends React.Component{
         this.api='';
     }
 
-     handleForm = async(e) => {
+    handleForm = async(e) => {
+        
         e.preventDefault();
         this.props.loading(true)
-        let data = {
+        let body = {
             userName:'Anwar',
             password:'1234',
         }
+        let error;
         let result = await axios({
             method: (this.method)? this.method :'GET',
             url: e.target.api.value,
-            data: data ? data:{},
-        }).catch(e=>{console.log(e.messeg);});
-        console.log('ffffffffff',result);
+            data: body ? body:{},
+        }).catch(e=>{
+            error=e.message;
+        });
         if(result){
         localStorage.setItem('history', JSON.stringify(result));
         this.setState({ 
@@ -34,30 +37,31 @@ class Form extends React.Component{
             method: (this.method)? this.method:'GET',
             history:result
         });
-        const data = result;
-        const count =  result.data.count;
-        const headers = result.headers;
+        }
         
-        this.props.result(data,count,headers,this.state.history);}
         else {
-            console.log('else');
+        //     console.log('else');
             this.setState({ 
 
-                api: e.target.api.value,
+             api: e.target.api.value,
                 method: (this.method)? this.method:'GET',
-                history:{
-                    config:{
-                        url: e.target.api.value,
-                         method: (this.method)? this.method:'GET',
+             history:{
+                config:{
+                    url: e.target.api.value,
+                    method: (this.method)? this.method:'GET',
                     },
-                    data:{count: 0,
-                    headers:{},
-                    results:[],
-                  }}
+                data:{count: -1,
+                headers:null,
+                results:(error)?error:'there something wrong in the URL',
+            }}
             })
-                this.props.result([],0,{},this.state.history);
         }
+        //         this.props.result([],0,{},this.state.history);
+        // }
+        this.props.result(this.state.history);
+
         this.props.loading(false)
+        
     }
 
     methodHandler = (e) => {

@@ -1,13 +1,33 @@
 
 header{
-    background-color: black;
+    background-color: #000;
     h1{
         display: flex;
-        color: white;
+        color: #E5F1E3;
+        margin-top: 0%;
+        margin-bottom: 0%;
         justify-content: center;
-        margin: 0%;
-        height: 4pc;
+        // height: 4pc;
         align-items: center;
     }
-}
+    ul{
+	    font: inherit;
+	    vertical-align: baseline;
+        list-style: none;
+        li{
+            a{
+                color: blanchedalmond;
 
+                margin: 0%;
+            }
+            list-style: none;
+
+	        font: inherit;
+	        vertical-align: baseline;
+            float: left;
+            font-size: large;
+            padding-right: 1%;
+        }
+    }
+    height: 6pc;
+}
